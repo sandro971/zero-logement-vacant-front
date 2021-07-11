@@ -13,36 +13,35 @@
                             <img src="../../public/static/img/login/login.jpg" class="fr-responsive-img" alt="">
                         </div>
                         <div class="fr-card__body">
-
                             
-                                <div class="fr-form-group">
-                                    <fieldset class="fr-fieldset">
-                                        <legend class="fr-fieldset__legend" id="text-legend">
-                                            S'identifier
-                                        </legend>
-                                        <form action="" @submit="submit">
-                                            <div class="fr-fieldset__content">
-                                                <div class="fr-input-group">
-                                                    <label class="fr-label" for="username">Username</label>
-                                                    <input class="fr-input" type="text" id="username" name="username" placeholder="@" v-model="fields.username" required>
-                                                </div>
-                                                <div class="fr-input-group">
-                                                    <label class="fr-label" for="password">Mot de passe</label>
-                                                    <input class="fr-input" type="password" id="password" name="password" placeholder="***********" v-model="fields.password" required>
-                                                </div>
-                                                <div class="fr-btns-group fr-btns-group--right">
-                                                    <button class="fr-btn" title="Label bouton">
-                                                        S'identifier
-                                                    </button>
-                                                </div>
+                            <div class="fr-form-group">
+                                <fieldset class="fr-fieldset">
+                                    <legend class="fr-fieldset__legend" id="text-legend">
+                                        S'identifier
+                                    </legend>
+                                    <form action="" @submit="submit">
+                                        <div class="fr-fieldset__content">
+                                            <div class="fr-input-group">
+                                                <label class="fr-label" for="username">Username</label>
+                                                <input class="fr-input" type="text" id="username" name="username" placeholder="@" v-model="fields.username" required>
                                             </div>
-                                        </form>
-                                    </fieldset>
+                                            <div class="fr-input-group">
+                                                <label class="fr-label" for="password">Mot de passe</label>
+                                                <input class="fr-input" type="password" id="password" name="password" placeholder="***********" v-model="fields.password" required>
+                                            </div>
+                                            <div class="fr-btns-group fr-btns-group--right">
+                                                <button class="fr-btn" title="Label bouton">
+                                                    S'identifier
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </fieldset>
 
-                                    
-                                    <div class="r-btns-group fr-btns-group--right">
-                                        <router-link  class="fr-link fr-fi-arrow-right-line fr-link--icon-right" to="/register">Créer un compte</router-link>
-                                    </div>
+                                
+                                <div class="r-btns-group fr-btns-group--right">
+                                    <router-link  class="fr-link fr-fi-arrow-right-line fr-link--icon-right" to="/register">Créer un compte</router-link>
+                                </div>
                             </div>
 
                         </div>
@@ -81,15 +80,14 @@
                 e.preventDefault()
                 e.stopPropagation()
                 
-                console.log(this.$store.state.dialogsConfig)
                 axios
                     .post('/api/login', this.fields)
                     .then(response => {
-                        this.dialog = this.$store.state.dialogsConfig.login_success
+                        this.dialog = Vue.$dialogsConfig.login_success
                         localStorage.setItem('token', response.data.token)
                     })
                     .catch(e =>{
-                        this.dialog = this.$store.state.dialogsConfig.login_error
+                        this.dialog = Vue.$dialogsConfig.login_error
                     })
             }
 		}

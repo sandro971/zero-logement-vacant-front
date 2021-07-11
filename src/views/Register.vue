@@ -85,12 +85,12 @@
                 axios
                     .post('/api/register', this.fields)
                     .then(response => {
-                        this.dialog = this.$store.state.dialogsConfig.register_success
+                        this.dialog = this.$dialogsConfig().register_success
                         localStorage.setItem('token', response.data.token)
                     })
                     .catch(e =>{
-                        this.dialog = Object.assign(this.$store.state.dialogsConfig.error, {
-                            message: this.$store.state.dialogsConfig.error.message + ' : ' + e.response.data.message
+                        this.dialog = Object.assign(this.$dialogsConfig().error, {
+                            message: this.$dialogsConfig().error.message + ' : ' + e.response.data.message
                         })
                     })
             }

@@ -4,7 +4,20 @@ import App from './App.vue'
 import './registerServiceWorker'
 import router from './router'
 
-import store from './plugins/store'
+import store from './store/index'
+
+const moment = require('moment')
+require('moment/locale/fr')
+
+Vue.use(require('vue-moment'), {
+	moment
+});
+
+
+store.commit('getPosition')
+
+import dialogsConfig from './dialogs/fr'
+Vue.prototype.$dialogsConfig = dialogsConfig
 
 
 Vue.config.productionTip = false

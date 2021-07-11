@@ -17,20 +17,17 @@
     import Dialog from './components/Dialog.vue' 
 
 
-
-
     export default {
         name: 'App',
 		components: {
             Dialog
 		},
 
-		mounted: ()=>{
-           
+		mounted(){
 		},
         data(){
             return {
-                dialog : this.$store.state.dialogsConfig.login_success
+                dialog : null
             }
         }
     }
